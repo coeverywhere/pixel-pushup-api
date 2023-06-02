@@ -1,0 +1,9 @@
+{
+  "dev": {
+    "app_function": "main.app",
+    "profile_name": "groundsignal",
+    "project_name": "PixelPushupAPI",
+    "runtime": "python3.10",
+    "s3_bucket": "pixel-pushup-api"
+  }
+}
