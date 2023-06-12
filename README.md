@@ -1,5 +1,7 @@
 # PixelPushupAPI Documentation
 
+![Image Alt Text](images/pushup.webp)
+
 The PixelPushupAPI is a Flask-based API that allows users to upload images, resize them, and store the resized versions in an S3 bucket. This documentation provides an overview of the API endpoints, request/response formats, and important considerations.
 
 ## Endpoints
