@@ -129,3 +129,11 @@ The PixelPushupAPI provides a simple and efficient way to upload images, generat
   }
 }
 ```
+
+```sh
+
+curl -X POST -F "image=@/Users/joshua/Desktop/caucasian-trendy.png" 127.0.0.1:5000/pushup | jq
+
+curl -X POST -F "image=@/Users/joshua/Desktop/mainstream-hotel.png" https://knadac9lf1.execute-api.us-east-1.amazonaws.com/dev/pushup | jq
+
+```

@@ -61,6 +61,10 @@ def pushup():
         'file_type': image_file.content_type
     }
 
+    # Upload the original image to the 'originals' folder
+    original_key = f'originals/{filename}.{image.format.lower()}'
+    upload_image_to_s3(image.copy(), original_key, bucket_name)
+
     # Process and upload the resized images
     for size_name, size in sizes.items():
         resized_image = resize_image(image.copy(), size)
