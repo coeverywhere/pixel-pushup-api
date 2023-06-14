@@ -34,6 +34,13 @@ def pushup():
     # Remove file extension from filename
     filename = os.path.splitext(image_file.filename)[0]
 
+    # Get the BucketDir from the request header
+    bucket_dir = request.headers.get('BucketDir')
+
+    # Create a folder for the filename in BucketDir
+    folder_path = os.path.join('assets', 'img', bucket_dir, filename)
+    os.makedirs(folder_path, exist_ok=True)
+
     # Get the image size of the original image
     original_image_size = image.size
 
@@ -49,6 +56,8 @@ def pushup():
 
     # Get the S3 bucket name from environment variables
     bucket_name = os.environ.get('S3_BUCKET_NAME')
+    if not bucket_name:
+        return jsonify({'error': 'S3 bucket name not found in environment variables.'}), 500
 
     # List to store the image details
     image_details = []
@@ -62,13 +71,14 @@ def pushup():
     }
 
     # Upload the original image to the 'originals' folder
-    original_key = f'originals/{filename}.{image.format.lower()}'
+    original_key = os.path.join(
+        folder_path, f'original{os.path.splitext(image_file.filename)[1]}')
     upload_image_to_s3(image.copy(), original_key, bucket_name)
 
     # Process and upload the resized images
     for size_name, size in sizes.items():
         resized_image = resize_image(image.copy(), size)
-        key = f'{size_name}/{filename}.webp'
+        key = os.path.join(folder_path, f'{size_name}.webp')
 
         # Check if the file already exists in the bucket
         if is_file_exists(bucket_name, key):
