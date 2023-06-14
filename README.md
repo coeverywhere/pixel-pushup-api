@@ -78,62 +78,93 @@ The PixelPushupAPI provides a simple and efficient way to upload images, generat
 {
   "images": [
     {
-      "file_size": "8.94 KB",
-      "filename": "mainstream-hotel",
-      "size": [100, 61],
+      "file_size": "5.63 KB",
+      "filename": "angels-envy-rye",
+      "size": [37, 100],
       "size_name": "t",
-      "url": "https://pixelpushup-test.s3.amazonaws.com/t/mainstream-hotel.webp"
+      "url": "https://pixelpushup-test.s3.amazonaws.com/assets/img/bottle/product/angels-envy-rye/t.webp"
     },
     {
-      "file_size": "61.68 KB",
-      "filename": "mainstream-hotel",
-      "size": [300, 183],
+      "file_size": "41.34 KB",
+      "filename": "angels-envy-rye",
+      "size": [112, 300],
       "size_name": "s",
-      "url": "https://pixelpushup-test.s3.amazonaws.com/s/mainstream-hotel.webp"
+      "url": "https://pixelpushup-test.s3.amazonaws.com/assets/img/bottle/product/angels-envy-rye/s.webp"
     },
     {
-      "file_size": "147.91 KB",
-      "filename": "mainstream-hotel",
-      "size": [500, 305],
+      "file_size": "106.30 KB",
+      "filename": "angels-envy-rye",
+      "size": [186, 500],
       "size_name": "m",
-      "url": "https://pixelpushup-test.s3.amazonaws.com/m/mainstream-hotel.webp"
+      "url": "https://pixelpushup-test.s3.amazonaws.com/assets/img/bottle/product/angels-envy-rye/m.webp"
     },
     {
-      "file_size": "331.43 KB",
-      "filename": "mainstream-hotel",
-      "size": [800, 487],
+      "file_size": "152.83 KB",
+      "filename": "angels-envy-rye",
+      "size": [222, 597],
       "size_name": "l",
-      "url": "https://pixelpushup-test.s3.amazonaws.com/l/mainstream-hotel.webp"
+      "url": "https://pixelpushup-test.s3.amazonaws.com/assets/img/bottle/product/angels-envy-rye/l.webp"
     },
     {
-      "file_size": "483.72 KB",
-      "filename": "mainstream-hotel",
-      "size": [1000, 609],
+      "file_size": "152.83 KB",
+      "filename": "angels-envy-rye",
+      "size": [222, 597],
       "size_name": "xl",
-      "url": "https://pixelpushup-test.s3.amazonaws.com/xl/mainstream-hotel.webp"
+      "url": "https://pixelpushup-test.s3.amazonaws.com/assets/img/bottle/product/angels-envy-rye/xl.webp"
     },
     {
-      "file_size": "609.99 KB",
-      "filename": "mainstream-hotel",
-      "size": [1141, 695],
+      "file_size": "152.83 KB",
+      "filename": "angels-envy-rye",
+      "size": [222, 597],
       "size_name": "xxl",
-      "url": "https://pixelpushup-test.s3.amazonaws.com/xxl/mainstream-hotel.webp"
+      "url": "https://pixelpushup-test.s3.amazonaws.com/assets/img/bottle/product/angels-envy-rye/xxl.webp"
     }
   ],
   "message": "Image processed and uploaded successfully.",
   "original": {
-    "file_size": "1.09 MB",
+    "file_size": "191.52 KB",
     "file_type": "image/png",
-    "filename": "mainstream-hotel",
-    "size": [1141, 695]
+    "filename": "angels-envy-rye",
+    "size": [222, 597]
   }
 }
 ```
 
 ```sh
 
-curl -X POST -F "image=@/Users/joshua/Desktop/caucasian-trendy.png" 127.0.0.1:5000/pushup | jq
+curl -X POST -H "BucketDir: bottle/product" -F "image=@/Users/joshua/Desktop/angels-envy-rye.png" http://127.0.0.1:5000/pushup | jq
 
-curl -X POST -F "image=@/Users/joshua/Desktop/mainstream-hotel.png" https://knadac9lf1.execute-api.us-east-1.amazonaws.com/dev/pushup | jq
+curl -X POST -H "BucketDir: bottle/product" -F "image=@/Users/joshua/Desktop/angels-envy-rye.png" https://knadac9lf1.execute-api.us-east-1.amazonaws.com/dev/pushup | jq
 
 ```
+
+just pass in the `BucketDir` in the headers
+
+## S3 Folder Structure
+
+````
+- /assets
+	- /img
+		- /icon
+			- /occasions
+			- /cocktails
+			- /alcohol
+			- /alcohol-graphics
+		- /refinement
+			- /mentions
+			- /culture
+			- /gender
+		- /opportunity
+		- /bottle
+			- /category
+			- /product
+		- /app
+			- {landing page images}.png
+			- {logo}.png
+	- /client
+		- /{bacardi}
+			- /list-assets
+				- /{venue-list-id}
+					- "sell-sheet.pdf"
+          ```
+````

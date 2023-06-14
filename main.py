@@ -56,6 +56,8 @@ def pushup():
 
     # Get the S3 bucket name from environment variables
     bucket_name = os.environ.get('S3_BUCKET_NAME')
+    if not bucket_name:
+        return jsonify({'error': 'S3 bucket name not found in environment variables.'}), 500
 
     # List to store the image details
     image_details = []
